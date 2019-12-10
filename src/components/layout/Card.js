@@ -5,7 +5,9 @@ import TaxesFees from "../TaxesFees/TaxesFees";
 import EstimatedTotal from "../EstimatedTotal/EstimatedTotal";
 import ItemDetails from "../ItemDetails/ItemDetails";
 import PromoCode from "../PromoCode/PromoCode";
-export default class Card extends Component {
+import { connect } from "react-redux";
+import { handleChange } from "../../actions/Actions";
+class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,6 +32,21 @@ export default class Card extends Component {
     );
   }
 
+  giveDiscountHandler() {
+    if (this.props.promoCode === "DISCOUNT") {
+      this.setState(
+        {
+          estTotal: this.state.estTotal * 0.9
+        },
+        function() {
+          this.setState({
+            disablePromoButton: true
+          });
+        }
+      );
+    }
+  }
+
   render() {
     return (
       <div className="card">
@@ -48,3 +65,9 @@ export default class Card extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  promoCode: state.promoCode.value
+});
+
+export default connect(mapStateToProps, { handleChange })(Card);

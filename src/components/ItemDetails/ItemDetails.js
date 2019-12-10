@@ -38,7 +38,6 @@ export default class ItemDetails extends Component {
               <Col md={6}>
                 <strong>{`$${this.props.price}`}</strong>
                 <br />
-                <strong className="price-strike">{`$${this.props.price}`}</strong>
               </Col>
               <Col md={6}>Qty: 1</Col>
             </Row>

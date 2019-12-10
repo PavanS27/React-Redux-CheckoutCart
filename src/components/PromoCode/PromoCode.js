@@ -8,16 +8,20 @@ import {
   FormControl,
   FormGroup
 } from "react-bootstrap";
+import { connect } from "react-redux";
+import { handleChange } from "../../actions/Actions";
 
-export default class PromoCode extends Component {
+class PromoCode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      value: ""
+      open: false
     };
   }
 
+  handleChange(e) {
+    this.props.handleChange(e);
+  }
   render() {
     return (
       <div>
@@ -39,7 +43,7 @@ export default class PromoCode extends Component {
                       type="text"
                       placeholder="Enter"
                       value={this.props.promoCode}
-                      onChange={this.handleChange}
+                      onChange={this.props.handleChange}
                     />
                   </FormGroup>
                   <Button
@@ -59,3 +63,9 @@ export default class PromoCode extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  promoCode: state.promoCode.value
+});
+
+export default connect(mapStateToProps, { handleChange })(PromoCode);
