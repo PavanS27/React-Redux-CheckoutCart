@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
+
+.show-grid {
+  padding-bottom: 1.5em;
+}
+
+body {
+  background: url("https://images.pexels.com/photos/34577/pexels-photo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card {
+  padding: 20px;
+  margin-top: 100px;
+  height: 600px;
+  width: 620px;
+  margin-left: 280px;
+
+  box-shadow: 1px 1px 5px grey;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+}
